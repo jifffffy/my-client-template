@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils';
 
 const CalendarGrid: React.FC = () => {
   const { currentDate, selectedDate } = useCalendarStore();
-  const { data: events, isLoading } = useEventsQuery();
+  const { data: events, isPending } = useEventsQuery();
   
   const days = getMonthDays(currentDate);
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -65,7 +65,7 @@ const CalendarGrid: React.FC = () => {
               </div>
               
               <div className="mt-1 overflow-y-auto max-h-20">
-                {isLoading ? (
+                {isPending ? (
                   <div className="space-y-1">
                     <Skeleton className="h-4 w-full" />
                     <Skeleton className="h-4 w-3/4" />

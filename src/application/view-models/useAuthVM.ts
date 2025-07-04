@@ -31,7 +31,7 @@ export const useLoginMutation = () => {
         actions.setLoading(false);
       }
     },
-    isLoading: useAuthLoading(),
+    isPending: useAuthLoading(),
     error: useAuthError(),
   };
 };
@@ -58,7 +58,7 @@ export const useRegisterMutation = () => {
         actions.setLoading(false);
       }
     },
-    isLoading: useAuthLoading(),
+    isPending: useAuthLoading(),
     error: useAuthError(),
   };
 };
@@ -79,7 +79,7 @@ export const useLogoutMutation = () => {
         actions.setLoading(false);
       }
     },
-    isLoading: useAuthLoading(),
+    isPending: useAuthLoading(),
     error: useAuthError(),
   };
 };
@@ -90,7 +90,7 @@ export const useCurrentUserQuery = () => {
   
   return {
     data: useAuthUser(),
-    isLoading: useAuthLoading(),
+    isPending: useAuthLoading(),
     error: useAuthError(),
     refetch: async () => {
       if (!token) return null;

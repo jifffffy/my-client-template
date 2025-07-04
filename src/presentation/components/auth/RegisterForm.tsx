@@ -38,7 +38,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
   onSwitchToLogin 
 }) => {
   const registerMutation = useRegisterMutation();
-  const isLoading = useAuthLoading();
+  const { isPending } = useRegisterMutation();
   const error = useAuthError();
   
   const form = useForm<z.infer<typeof formSchema>>({
@@ -164,9 +164,9 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
           <Button 
             type="submit" 
             className="w-full"
-            disabled={isLoading}
+            disabled={isPending}
           >
-            {isLoading ? (
+            {isPending ? (
               <>
                 <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
                 Creating account...

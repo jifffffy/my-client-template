@@ -1,22 +1,22 @@
-import React from 'react';
-import CalendarContainer from '@/presentation/features/Calendar/containers/CalendarContainer';
-import { useAuthUser, useAuthActions } from '@/application/stores/authStore';
-import { Button } from '@/presentation/components/ui/button';
-import { LogOut } from 'lucide-react';
-import { useLogoutMutation } from '@/application/view-models/useAuthVM';
-import { Separator } from '@/presentation/components/ui/separator';
+import React from "react";
+import CalendarContainer from "@/presentation/features/Calendar/containers/CalendarContainer";
+import { useAuthUser, useAuthActions } from "@/application/stores/authStore";
+import { Button } from "@/presentation/components/ui/button";
+import { LogOut } from "lucide-react";
+import { useLogoutMutation } from "@/application/view-models/useAuthVM";
+import { Separator } from "@/presentation/components/ui/separator";
 
 const HomePage: React.FC = () => {
   const user = useAuthUser();
   const actions = useAuthActions();
   const logoutMutation = useLogoutMutation();
-  
+
   const handleLogout = async () => {
     try {
       await logoutMutation.mutateAsync();
       actions.logout();
     } catch (error) {
-      console.error('Logout failed:', error);
+      console.error("Logout failed:", error);
     }
   };
 
@@ -27,7 +27,7 @@ const HomePage: React.FC = () => {
           <h1 className="text-2xl font-bold">My Calendar</h1>
           <p className="text-gray-600">Manage your events and schedule</p>
         </div>
-        
+
         <div className="flex items-center gap-4">
           {user && (
             <div className="flex items-center">
@@ -36,9 +36,9 @@ const HomePage: React.FC = () => {
                 <p className="text-sm text-gray-600">{user.email}</p>
               </div>
               {user.avatar ? (
-                <img 
-                  src={user.avatar} 
-                  alt={user.name} 
+                <img
+                  src={user.avatar}
+                  alt={user.name}
                   className="w-10 h-10 rounded-full"
                 />
               ) : (
@@ -46,20 +46,20 @@ const HomePage: React.FC = () => {
               )}
             </div>
           )}
-          
-          <Button 
+
+          <Button
             variant="outline"
             onClick={handleLogout}
-            disabled={logoutMutation.isLoading}
+            disabled={logoutMutation.isPending}
           >
             <LogOut className="mr-2 h-4 w-4" />
-            Logout
+            {logoutMutation.isPending ? "Logging out..." : "Logout"}
           </Button>
         </div>
       </div>
-      
+
       <Separator className="my-4" />
-      
+
       <div className="flex-1">
         <CalendarContainer />
       </div>

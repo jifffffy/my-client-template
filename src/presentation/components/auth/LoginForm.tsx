@@ -34,7 +34,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
   onSwitchToRegister,
 }) => {
   const loginMutation = useLoginMutation();
-  const isLoading = useAuthLoading();
+  const { isPending } = useLoginMutation();
   const error = useAuthError();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -107,8 +107,8 @@ const LoginForm: React.FC<LoginFormProps> = ({
             )}
           />
 
-          <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? (
+          <Button type="submit" className="w-full" disabled={isPending}>
+            {isPending ? (
               <>
                 <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
                 Signing in...

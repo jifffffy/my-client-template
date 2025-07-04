@@ -22,26 +22,28 @@ interface CalendarState {
   };
 }
 
-export const useCalendarStore = create<CalendarState>()((set) => ({
-  currentDate: new Date(),
-  selectedDate: new Date(),
-  selectedEvent: null,
-  isFormOpen: false,
-  isEditing: false,
-  view: "month",
+export const useCalendarStore = create<CalendarState>()(
+  devtools((set) => ({
+    currentDate: new Date(),
+    selectedDate: new Date(),
+    selectedEvent: null,
+    isFormOpen: false,
+    isEditing: false,
+    view: "month",
 
-  actions: {
-    nextMonth: () =>
-      set((state) => ({ currentDate: addMonths(state.currentDate, 1) })),
-    prevMonth: () =>
-      set((state) => ({ currentDate: subMonths(state.currentDate, 1) })),
-    setSelectedDate: (date) => set({ selectedDate: date }),
-    setSelectedEvent: (event) => set({ selectedEvent: event }),
-    openForm: (isEditing = false) => set({ isFormOpen: true, isEditing }),
-    closeForm: () => set({ isFormOpen: false, selectedEvent: null }),
-    setView: (view) => set({ view }),
-  },
-}));
+    actions: {
+      nextMonth: () =>
+        set((state) => ({ currentDate: addMonths(state.currentDate, 1) })),
+      prevMonth: () =>
+        set((state) => ({ currentDate: subMonths(state.currentDate, 1) })),
+      setSelectedDate: (date) => set({ selectedDate: date }),
+      setSelectedEvent: (event) => set({ selectedEvent: event }),
+      openForm: (isEditing = false) => set({ isFormOpen: true, isEditing }),
+      closeForm: () => set({ isFormOpen: false, selectedEvent: null }),
+      setView: (view) => set({ view }),
+    },
+  }))
+);
 
 // 导出actions以便直接使用
 export const useCalendarActions = () =>

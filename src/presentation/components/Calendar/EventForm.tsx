@@ -231,7 +231,7 @@ const EventForm: React.FC = () => {
           <Button variant="outline" onClick={closeForm}>
             Cancel
           </Button>
-          <Button type="submit" disabled={createMutation.isLoading || updateMutation.isLoading}>
+          <Button type="submit" disabled={createMutation.isPending || updateMutation.isPending}>
             {isEditing ? 'Update Event' : 'Create Event'}
           </Button>
         </div>

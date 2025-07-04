@@ -171,7 +171,7 @@ function authenticateToken(req: express.Request, res: express.Response, next: ex
   if (!token) return res.sendStatus(401);
   
   jwt.verify(token, JWT_SECRET, (err: any, user: any) => {
-    if (err) return res.sendStatus(403);
+    if (err) return res.sendStatus(401);
     req.user = user;
     next();
   });

@@ -18,7 +18,7 @@ import CalendarHeader from '@/presentation/components/Calendar/CalenderHeader';
 interface CalendarViewProps {
   currentDate: Date;
   events: CalendarEvent[];
-  isLoading: boolean;
+  isPending: boolean;
   error?: string | null;
   handlers: {
     handlePrevMonth: () => void;
@@ -34,7 +34,7 @@ interface CalendarViewProps {
 const CalendarView: React.FC<CalendarViewProps> = ({
   currentDate,
   events,
-  isLoading,
+  isPending,
   error,
   handlers,
   selectedEvent,
@@ -74,7 +74,7 @@ const CalendarView: React.FC<CalendarViewProps> = ({
       )}
       
       <div className="mt-4 flex-1 overflow-hidden">
-        {isLoading ? (
+        {isPending ? (
           <div className="grid grid-cols-7 gap-4">
             {Array.from({ length: 35 }).map((_, index) => (
               <Skeleton key={index} className="h-32 rounded-lg" />

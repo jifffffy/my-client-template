@@ -8,7 +8,7 @@ import type { CalendarEvent } from "@/domain/entities/CalendarEvent";
 const CalendarContainer: React.FC = () => {
   const { currentDate, selectedDate, selectedEvent, isFormOpen } =
     useCalendarStore();
-  const { data: events, isLoading, error } = useEventsQuery();
+  const { data: events, isPending, error } = useEventsQuery();
   const handlers = useCalendarHandlers();
 
   // 获取选中日期的事件
@@ -29,7 +29,7 @@ const CalendarContainer: React.FC = () => {
     <CalendarView
       currentDate={currentDate}
       events={getSelectedDateEvents()}
-      isLoading={isLoading}
+      isPending={isPending}
       error={error?.message}
       handlers={handlers}
       selectedEvent={selectedEvent}
