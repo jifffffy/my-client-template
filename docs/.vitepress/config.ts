@@ -4,6 +4,7 @@ export default withMermaid({
   title: "React 日历应用",
   description: "基于 React、Zustand 和 React Query 的现代日历应用",
   ignoreDeadLinks: true,
+  cleanUrls: true,
   themeConfig: {
     nav: [
       { text: "首页", link: "/" },
@@ -43,4 +44,5 @@ export default withMermaid({
     },
   },
   mermaid: {},
+  base: "/my-client-template/"
 });
