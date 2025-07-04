@@ -148,4 +148,4 @@ For comprehensive documentation including architecture diagrams, API details, an
 
 ---
 
-**React Calendar Application** © 2023. Designed and built with modern web technologies.
+**React Calendar Application** © 2025. Designed and built with modern web technologies.
