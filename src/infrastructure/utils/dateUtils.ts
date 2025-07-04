@@ -1,16 +1,39 @@
-import { 
-  format, 
-  addMonths, 
-  subMonths, 
-  startOfMonth, 
-  endOfMonth, 
-  startOfWeek, 
-  endOfWeek, 
+import {
+  format,
+  addMonths,
+  subMonths,
+  startOfMonth,
+  endOfMonth,
+  startOfWeek,
+  endOfWeek,
   eachDayOfInterval,
   isSameMonth,
   isSameDay,
-  isToday
-} from 'date-fns';
+  isToday,
+  startOfDay,
+  endOfDay,
+  isSameWeek,
+} from "date-fns";
+
+// 获取一周的日期
+export const getWeekDays = (startDate: Date): Date[] => {
+  const start = startOfWeek(startDate);
+  const end = endOfWeek(startDate);
+  return eachDayOfInterval({ start, end });
+};
+
+// 获取一天的日期范围
+export const getDayRange = (date: Date) => {
+  return {
+    start: startOfDay(date),
+    end: endOfDay(date),
+  };
+};
+
+// 检查是否同一周
+export const isSameWeekDate = (date1: Date, date2: Date): boolean => {
+  return isSameWeek(date1, date2);
+};
 
 // 获取月份的所有日期
 export const getMonthDays = (date: Date): Date[] => {
@@ -38,16 +61,19 @@ export const isTodayDate = (date: Date): boolean => {
 };
 
 // 格式化日期
-export const formatDate = (date: Date, formatStr: string = 'yyyy-MM-dd'): string => {
+export const formatDate = (
+  date: Date,
+  formatStr: string = "yyyy-MM-dd"
+): string => {
   return format(date, formatStr);
 };
 
 // 获取月份名称
 export const getMonthName = (date: Date): string => {
-  return format(date, 'MMMM');
+  return format(date, "MMMM");
 };
 
 // 获取年份
 export const getYear = (date: Date): string => {
-  return format(date, 'yyyy');
+  return format(date, "yyyy");
 };
