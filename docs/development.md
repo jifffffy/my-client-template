@@ -40,6 +40,7 @@
 ### 单元测试
 ```bash
 npm test # 使用 Vitest 运行测试
+```
 
 ### 测试示例
 ```typescript
