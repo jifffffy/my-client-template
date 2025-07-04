@@ -144,7 +144,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Documentation
 
-For comprehensive documentation including architecture diagrams, API details, and development guides, visit our [documentation site](https://your-docs-site.com).
+For comprehensive documentation including architecture diagrams, API details, and development guides, visit our [documentation site](https://jifffffy.github.io/my-client-template/).
 
 ---
 
