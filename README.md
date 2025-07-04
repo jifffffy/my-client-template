@@ -1,4 +1,4 @@
-# React Calendar Application
+# A client Template for React Calendar Application
 
 A modern, responsive calendar application built with React, Zustand, and React Query. This application helps users efficiently manage their schedules and events with an intuitive interface and robust functionality.
 
